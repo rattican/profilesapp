@@ -1,28 +1,23 @@
 import React from 'react';
 import {
-    Button,
     Heading,
     Flex,
-    View,
-    Grid,
     Divider,
-  } from "@aws-amplify/ui-react";
+} from "@aws-amplify/ui-react"
 
-export function History(){ 
-    return (
+export function LogVitals(){
+    return(
         <Flex
-            className="History"
+            className="LogVitals"
             justifyContent="center"
             alignItems="center"
             direction="column"
             width="70%"
             margin="0 auto">
-
-            <Heading level={1}>History</Heading>
+            <Heading level={1}>Log Vitals</Heading>
             <Divider />
-             
         </Flex>
     )
 }
 
-export default History;
+export default LogVitals;

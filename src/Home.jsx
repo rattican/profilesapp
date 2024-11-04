@@ -1,4 +1,4 @@
-// PATIENT DASHBOARD (home APP screen)
+// HOME Screen
 import { useState, useEffect } from "react";
 import {
   Button,
@@ -17,14 +17,6 @@ import outputs from "../amplify_outputs.json";
 
 import * as React from 'react';
 
-// Imports for .jsx files
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./Home";
-import LogVitals from "./LogVitals";
-import History from "./History";
-import Profile from "./Profile";
-import Navigation from "./Navigation";
-
 /**
  * @type {import('aws-amplify/data').Client<import('../amplify/data/resource').Schema>}
  */
@@ -34,7 +26,7 @@ const client = generateClient({
   authMode: "userPool",
 });
 
-export default function App() {
+export default function Home() {
   const [userprofiles, setUserProfiles] = useState([]);
   const { signOut } = useAuthenticator((context) => [context.user]);
 
@@ -48,26 +40,46 @@ export default function App() {
   }
 
   return (
-    <BrowserRouter>
     <Flex
-      className="App"
+      className="Home"
       justifyContent="center"
       alignItems="center"
       direction="column"
       width="70%"
       margin="0 auto"
     >
-      
-    <Routes>
-      <Route path="/" element={<Navigation />}>
-        <Route index element={<Home />}/>
-        <Route path="logVitals" element={<LogVitals />}/>
-        <Route path="history" element={<History />}/>
-        <Route path="profile" element={<Profile />}/>
-      </Route>
-    </Routes>
+
+      <Heading level={1}>Home</Heading>
+
+      <Divider />
+
+      <Grid
+        margin="3rem 0"
+        autoFlow="column"
+        justifyContent="center"
+        gap="2rem"
+        alignContent="center"
+      >
+        {userprofiles.map((userprofile) => (
+          <Flex
+            key={userprofile.id || userprofile.email}
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+            gap="2rem"
+            border="1px solid #ccc"
+            padding="2rem"
+            borderRadius="5%"
+            className="box"
+          >
+            <View>
+              <Heading level="3">{userprofile.email}</Heading>
+            </View>
+          </Flex>
+        ))}
+      </Grid>
+      <Button onClick={signOut}>Sign Out</Button>
 
     </Flex>
-    </BrowserRouter>
   );
 }
