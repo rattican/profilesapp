@@ -3,6 +3,9 @@ import {
     Heading,
     Flex,
     Divider,
+    Text,
+    View,
+    Button,
 } from "@aws-amplify/ui-react"
 
 export function LogVitals(){
@@ -16,6 +19,11 @@ export function LogVitals(){
             margin="0 auto">
             <Heading level={1}>Log Vitals</Heading>
             <Divider />
+            <View>
+            <Text>Enter Heart Rate:</Text>
+            <Text>Enter Blood Pressure:</Text>
+            <Button>Temp Button</Button>
+            </View>
         </Flex>
     )
 }

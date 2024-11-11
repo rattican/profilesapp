@@ -6,6 +6,7 @@ import {
     View,
     Grid,
     Divider,
+    Text,
 } from "@aws-amplify/ui-react"
 
 import { useState, useEffect } from "react";
@@ -14,6 +15,7 @@ import { Amplify } from "aws-amplify";
 import "@aws-amplify/ui-react/styles.css";
 import { generateClient } from "aws-amplify/data";
 import outputs from "../amplify_outputs.json";
+import { deleteUser } from 'aws-amplify/auth';
 
 Amplify.configure(outputs);
 const client = generateClient({
@@ -65,6 +67,19 @@ export function Profile(){
                     <View>
                     <Heading level="3">{userprofile.email}</Heading>
                     </View>
+
+                    <Text>
+                        Patient id: {userprofile.id}<br/>
+                        First name:{userprofile.fname}<br/>
+                        Last name:{userprofile.lname}<br/>
+                        Date of birth:<br/>
+                        Gender:<br/>
+
+                        Address:<br/>
+                        Email address: {userprofile.email}<br/>
+                        Phone number:<br/>
+                    </Text>
+                    <Button onClick={deleteUser}>Delete User</Button>
                 </Flex>
                 ))}
             </Grid>

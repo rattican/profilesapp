@@ -74,6 +74,7 @@ export default function Home() {
           >
             <View>
               <Heading level="3">{userprofile.email}</Heading>
+              /* BUG: Prints another instance when password is reset */
             </View>
           </Flex>
         ))}
