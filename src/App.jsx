@@ -51,11 +51,11 @@ export default function App() {
     <BrowserRouter>
     <Flex
       className="App"
-      justifyContent="center"
-      alignItems="center"
-      direction="column"
-      width="70%"
-      margin="0 auto"
+      //justifyContent="center"
+      //alignItems="center"
+      //direction="column"
+      //width="70%"
+      //margin="0 auto"
     >
       
     <Routes>

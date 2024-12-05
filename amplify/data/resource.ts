@@ -13,6 +13,7 @@ const schema = a
       ]),
   })
   .authorization((allow) => [allow.resource(postConfirmation)]);
+
 export type Schema = ClientSchema<typeof schema>;
 
 export const data = defineData({
